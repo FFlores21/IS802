@@ -1,12 +1,12 @@
 <?php 
-
+/*
 $SERVER ='localhost';
 $USER ='root';
 $PASS ='';
-$DB ='db_elis(1.0)';
+$DB ='db_elis(2.0)';
+*/
 
-
-$conexion = mysqli_connect ($SERVER,$USER,$PASS,$DB);
+$conexion = mysqli_connect ("localhost","root","","db_elis(2.0)");
 
 if ($conexion){
 

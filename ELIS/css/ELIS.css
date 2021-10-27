@@ -34,6 +34,11 @@
     cursor: pointer;
 }
 
+.modal_solicitud{
+    background-color: rgba(24, 154, 198, 0.363) !important;
+    color: #f2f2f2; 
+}
+
 #deta {
     position: relative;
     left: 25%;

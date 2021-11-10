@@ -195,7 +195,7 @@
     <footer style="background-color: rgba(24, 154, 198, 0.64);"> 
         <h5 style="text-align: center; color: white;">Vota por tu candidato</h5>
         <h3 style="text-align: center; color: white;">Elis se caracteriza por su organización, por lo que tu particpación es importante,<br>¡selecciona tu candidato y aporta al desarrollo del presente proceso!</h3>
-        <div style="background-image: url(img/img3.jpg); background-size: cover; background-repeat: no-repeat; background-position: top center; height: 250px; width: 33%; margin-left: 33%"></div>
+        <div style="background-image: url(../img/img3.jpg); background-size: cover; background-repeat: no-repeat; background-position: top center; height: 250px; width: 33%; margin-left: 33%"></div>
     </footer>
     <script src="../js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

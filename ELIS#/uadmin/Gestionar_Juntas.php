@@ -1,3 +1,43 @@
+
+<?php
+                
+  $id1="";
+  $nombre1="";
+  $id2="";
+  $nombre2="";
+  $id3="";
+  $nombre3="";
+  
+  
+  $conexion=mysqli_connect('localhost', 'root', '');
+  if(mysqli_connect_errno()){
+      echo "Fallo al conectar con la BBDD";
+      exit();
+  }
+  mysqli_select_db($conexion, 'db_elis(2.0)') or die ("no se encuentra db");
+  mysqli_set_charset($conexion, "utf8");
+  
+  $consulta = "SELECT ID_JUNTAS, NOMBRE_JUNTA FROM juntas WHERE ID_JUNTAS=1";
+  $resultado=mysqli_query($conexion, $consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+      $id1= $fila["ID_JUNTAS"];
+      $nombre1= $fila["NOMBRE_JUNTA"]; }
+  $consulta = "SELECT ID_JUNTAS, NOMBRE_JUNTA FROM juntas WHERE ID_JUNTAS=2";
+  $resultado=mysqli_query($conexion, $consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+      $id2= $fila["ID_JUNTAS"];
+      $nombre2= $fila["NOMBRE_JUNTA"]; }
+  
+  $consulta = "SELECT ID_JUNTAS, NOMBRE_JUNTA FROM juntas WHERE ID_JUNTAS=5";
+  $resultado=mysqli_query($conexion, $consulta);
+  while ($fila=mysqli_fetch_array($resultado)) {
+      $id3= $fila["ID_JUNTAS"];
+      $nombre3= $fila["NOMBRE_JUNTA"]; }
+    
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,12 +101,27 @@
                   <table>
                       <thead></thead>
                       <tbody>
-                        <tr style="padding:50px">
+                      <tr>
 
-                          <td style="margin: 100px; width:33%"><t3>Nombre de la Junta</t3></td>
-                          <td style="margin: 100px; width:33%"><button style="margin-left: 35%;width:30%;background-color: rgba(196, 196, 196, 1); color: black;border-color: rgba(196, 196, 196, 1); border-radius: 3px " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">Editar</button></td>
-                          
+                        <td style="height: 100px; width:100px"><t3>ID: <?php echo $id1;?></t3></td>
+                        <td style="height: 100px; width:100px"><t3><?php echo $nombre1;?></t3></td>
+                        <td style="height: 100px; width:100px"><button style="margin-left: 35%;width:100%;background-color: rgba(196, 196, 196, 1); color: black;border-color: rgba(196, 196, 196, 1); border-radius: 3px " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">Editar</button></td>
+
                         </tr>
+                        <tr>
+
+                        <td style="height: 100px; width:100px"><t3>ID: <?php echo $id2;?></t3></td>
+                        <td style="height: 100px; width:100px"><t3><?php echo $nombre2;?></t3></td>
+                        <td style="height: 100px; width:100px"><button style="margin-left: 35%;width:100%;background-color: rgba(196, 196, 196, 1); color: black;border-color: rgba(196, 196, 196, 1); border-radius: 3px " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">Editar</button></td>
+
+                        </tr>
+                        <tr>
+
+                        <td style="height: 100px; width:100px"><t3>ID: <?php echo $id3;?></t3></td>
+                        <td style="height: 100px; width:100px"><t3><?php echo $nombre3;?></t3></td>
+                        <td style="height: 100px; width:100px"><button style="margin-left: 35%;width:100%;background-color: rgba(196, 196, 196, 1); color: black;border-color: rgba(196, 196, 196, 1); border-radius: 3px " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">Editar</button></td>
+
+                      </tr>
                       </tbody>
                   </table>
 
@@ -91,6 +146,10 @@
                 
             <div style="Background-color:rgba(196, 196, 196, 1);padding:10px">
               <form action="Actualizar_Junta.php" method="post" enctype ="multipart/form-data">
+                <div class="mb-3">
+                  <label for="exampleInputPassword1"  class="form-label">ID Junta</label>
+                  <input type="text" REQUIRED name="Id"  class="form-control" id="exampleInputPassword1">
+                </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1"  class="form-label">Nombre Junta</label>
                   <input type="text" REQUIRED name="Nombre" class="form-control" id="exampleInputPassword1">

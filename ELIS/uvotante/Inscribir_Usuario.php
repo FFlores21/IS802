@@ -24,7 +24,7 @@
 
       <!-- Botones (Anclas) de sing in, sing up y estadisticas-->
 
-      <a href="Sing_In.php" style="padding-left: 75%; color:white; font-size:larger;">Sing In</a>
+      <a href="Sing_In.php" style="padding-left: 75%; color:white; font-size:larger;" >Sing In</a>
 
       <a href="Stats.html" style="padding-left: 5%; color: white;font-size: larger;">Statistics</a>
 
@@ -84,10 +84,26 @@
                   <input type="password" REQUIRED name="password2" class="form-control" id="exampleInputPassword1">
                 </div>  
     
-                <button type="submit" name="register" class="btn btn-primary">Sing Up</button>
-            </form>
+                <button href="Sing_In.php" type="submit" name="register" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Sing Up</button>
+            <!------Agregue modal para mostrar mensaje de Usuario Registrado----->
+              </form>
 
         </div>
+
+<!--============================================================Modal==============================================================================-->
+ 
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content  modal_solicitud">
+      <div class="modal-body">
+      <p style="text-align: center">Usuario Registrado.</p>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+                   
+    </div>
+  </div>
+</div>
+
 
 <!--============================================================Footer(Publicidad)==============================================================================-->
         <footer style="background-color: transparent"> 

@@ -1,6 +1,8 @@
 <?php 
     
-    
+    $nombres=$propuesta=$presidente=$vice_presidente=$tesorero=$fiscal=$vocal1=$vocal2=$vocal3=$foto_junta=$logo"";
+        
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = $_POST['Nombre'];
         $propuesta = $_POST ['Propuesta'];    
         $presidente = $_POST ['Presidente'];
@@ -25,13 +27,20 @@
         VALUES (:Nombre, :Propuesta, :Presidente, :VicePresidente, :Tesorero, :Fiscal, :Vocal1, :Vocal2, :Vocal3, :Logo, :Foto_Junta)";
         $resultado =  $base->prepare($sql);
         $resultado -> execute(array(":Nombre"=>$nombre, ":Propuesta"=>$propuesta, ":Presidente"=>$presidente, ":VicePresidente"=>$vice_presidente, ":Tesorero"=>$tesorero, ":Fiscal"=>$fiscal, ":Vocal1"=>$vocal1, ":Vocal2"=>$vocal2, ":Vocal3"=>$vocal3, ":Logo"=>$logo,":Foto_Junta"=>$foto_junta));
-        echo "Registro Insertado";
+      //  echo "Registro Insertado";
     }catch(Exception $e){
       
-        echo "Linea del error: " . $e->getLine();
+       // echo "Linea del error: " . $e->getLine();
     }finally{
         $base=null;
     }
+}
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 
 ?>
 

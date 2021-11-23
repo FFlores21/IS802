@@ -26,7 +26,9 @@
 
       <!-- Botones (Anclas) de sing in, sing up y estadisticas-->
 
-      <a href="uvotante/Candidatos.php" style="padding-left: 50%; color:white; font-size:larger;">Candidatos</a>
+      <a href="uvotante/Voto.php" style="padding-left: 30%; color:white; font-size:larger;">Realizar voto</a>
+
+      <a href="uvotante/Candidatos.php" style="padding-left: 5%; color:white; font-size:larger;">Candidatos</a>
 
       <a href="" style="padding-left: 5%; color:white; font-size:larger;" 
       data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Sign In</a>

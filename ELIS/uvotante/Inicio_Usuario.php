@@ -39,7 +39,7 @@
 
       <!-- Botones (Anclas) de sing in, sing up y estadisticas-->
 
-      <a href="Voto.php" style="padding-left: 35%; color: white;font-size: larger;">Realizar Voto</a>
+      <a href="Verifica_Voto.php" style="padding-left: 35%; color: white;font-size: larger;">Realizar Voto</a>
 
       <a class="boton" style="padding-left: 5%; color:white; font-size:larger;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <svg class="bi me-2" width="30" height="30"><use xlink:href="#solicitud"/></svg>Solicitud

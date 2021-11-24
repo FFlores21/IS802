@@ -24,10 +24,6 @@
 
       <!-- Botones (Anclas) de sing in, sing up y estadisticas-->
 
-      <a href="Sing_In.php" style="padding-left: 75%; color:white; font-size:larger;" >Sing In</a>
-
-      <a href="Stats.html" style="padding-left: 5%; color: white;font-size: larger;">Statistics</a>
-
       
     </header>
 

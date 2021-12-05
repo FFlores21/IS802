@@ -120,7 +120,7 @@
             <div class="col-xl-4" >
 
               <div class="rounded float-start" style="height: 800px; width: 90%;background-color:  rgba(222, 232, 230, 0.8)">
-                <div style="background-image: url(../img/Ejemplo2.jpeg); background-size: cover; background-repeat: no-repeat; height: 350px; margin: 20px;"></div>
+              <div class="img"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $resultado2['FOTO_JUNTA'] ).'"/>';?></div>
                 <p style="text-align: center; font-size: 30px"> <?php echo $nombre1?>:</p>
                 </br>
                 <p style="text-align: center"> <?php echo $propuesta1;?></p>
@@ -134,7 +134,7 @@
             <div class="col-xl-4">
 
               <div class="rounded mx-auto d-block" style="height: 800px; width: 90%;background-color:  rgba(222, 232, 230, 0.8)">
-                <div style="background-image: url(../img/Ejemplo1.jpeg); background-size: cover; background-repeat: no-repeat; height: 350px; margin: 0px 20px"></div>
+              <div class="img"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $resultado3['FOTO_JUNTA'] ).'"/>';?></div>
                 <p style="text-align: center; font-size: 30px"> <?php echo $nombre2;?>:</p>
                 </br>
                 <p style="text-align: center"> <?php echo $propuesta2;?>
@@ -149,7 +149,7 @@
             <div class="col-xl-4">
 
               <div class="rounded float-end" style="height: 800px; width: 90%; background-color:  rgba(222, 232, 230, 0.8)">
-                <div style="background-image: url(../img/Ejemplo3.jpeg); background-size: cover; background-repeat: no-repeat; height: 350px; margin: 0px 20px"></div>
+              <div class="img"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $resultado4['FOTO_JUNTA'] ).'"/>';?></div>
                 <p style="text-align: center; font-size: 30px"> <?php echo $nombre3;?>:</p>
                 </br>
                 <p style="text-align: center"> <?php echo $propuesta3;?> </p>

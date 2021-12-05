@@ -1,3 +1,57 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION["usuario"])){
+      header("Location:Sing_In.php");
+    }
+?>
+
+<?php
+                
+   
+    $conexion=mysqli_connect('localhost', 'root', '');
+    if(mysqli_connect_errno()){
+        echo "Fallo al conectar con la BBDD";
+        exit();
+    }
+    mysqli_select_db($conexion, 'db_elis(2.0)') or die ("no se encuentra db");
+    mysqli_set_charset($conexion, "utf8");
+
+    $consulta = "SELECT NOMBRE_JUNTA FROM juntas WHERE ID_JUNTAS=1";
+    $resultado=mysqli_query($conexion, $consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+        $nombre1= $fila["NOMBRE_JUNTA"]; }
+    $consulta = "SELECT NOMBRE_JUNTA FROM juntas WHERE ID_JUNTAS=2";
+    $resultado=mysqli_query($conexion, $consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+        $nombre2= $fila["NOMBRE_JUNTA"]; }
+    $consulta = "SELECT NOMBRE_JUNTA FROM juntas WHERE ID_JUNTAS=5";
+    $resultado=mysqli_query($conexion, $consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+        $nombre3= $fila["NOMBRE_JUNTA"]; }
+      
+
+    $sql1 = "SELECT COUNT(*) conteo1 FROM boletas WHERE VOTO_JUNTA = '$nombre1'";
+    $sql2 = "SELECT COUNT(*) conteo2 FROM boletas WHERE VOTO_JUNTA = '$nombre2'";
+    $sql3 = "SELECT COUNT(*) conteo3 FROM boletas WHERE VOTO_JUNTA = '$nombre3'";
+
+    //Data recolectada
+    $data1 = $conexion->query($sql1);
+    $data2 = $conexion->query($sql2);
+    $data3 = $conexion->query($sql3);
+    while($row = $data1->fetch_object()) {
+       $conteo1= $row->conteo1;
+    }
+    while($row2 = $data2->fetch_object()) {
+        $conteo2= $row2->conteo2;
+     }
+    while($row3 = $data3->fetch_object()) {
+       $conteo3= $row3->conteo3;
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +70,7 @@
 
 <body style="background-color:#f2f2f2 ">
 
-    <?php
-    session_start();
 
-    if(!isset($_SESSION["usuario"])){
-      header("Location:Sing_In.php");
-    }
-?>
 
         
     <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px;">
@@ -49,7 +97,7 @@
                 <strong><h1 id="ten" style="font-size: 38px; margin-left: 130px; margin-bottom: 30px;">Proyección procesos de votación</h1></strong>
                 <div id="tend">
                     <canvas id="grafica"></canvas>
-                    <script src="../js/Stats.js"></script>
+                    
                     
                 </div>
             </div>
@@ -61,12 +109,22 @@
     </div>
     
 
-
+        
         <script src="../js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+            var junta1 ='<?php echo $nombre1;?>';
+            var junta2 ='<?php echo $nombre2;?>';
+            var junta3 ='<?php echo $nombre3;?>';
+            var conteo_junta1 ='<?php echo $conteo1;?>';
+            var conteo_junta2 ='<?php echo $conteo2;?>';
+            var conteo_junta3 ='<?php echo $conteo3;?>';
+        </script>
+        <script src="../js/Stats.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,70 @@
+<?php
+      session_start();
+
+      if(!isset($_SESSION["usuario"])){
+        header("Location:Sing_In.php");
+      }
+?>
+
+<?php
+    $conexion=mysqli_connect('localhost', 'root', '');
+    if(mysqli_connect_errno()){
+        echo "Fallo al conectar con la BBDD";
+        exit();
+    }
+    mysqli_select_db($conexion, 'db_elis(2.0)') or die ("no se encuentra db");
+    mysqli_set_charset($conexion, "utf8");
+
+
+      $consulta = "SELECT * FROM juntas WHERE ID_JUNTAS=1";
+      $resultado=mysqli_query($conexion, $consulta);
+      while ($fila=mysqli_fetch_array($resultado)) {
+          $nombre1= $fila["NOMBRE_JUNTA"];
+          $propuesta1 = $fila["PROPUESTA"];
+          $presidente1 = $fila["PRESIDENTE"];
+          $vice1 =$fila["VPRESIDENTE"];
+          $tesorero1 =$fila["TESORERO"];
+          $fiscal1 =$fila["FISCAL"];
+          $vocal11 =$fila["VOCAL1"];
+          $vocal12 =$fila["VOCAL2"];
+          $vocal13 =$fila["VOCAL3"];}
+          $consulta2 = "SELECT * FROM juntas WHERE ID_JUNTAS=1";
+          $sth = $conexion->query($consulta2);
+          $resultado2=mysqli_fetch_array($sth);
+
+      $consulta = "SELECT * FROM juntas WHERE ID_JUNTAS=2";
+      $resultado=mysqli_query($conexion, $consulta);
+      while ($fila=mysqli_fetch_array($resultado)) {
+          $nombre2= $fila["NOMBRE_JUNTA"];
+          $propuesta2 = $fila["PROPUESTA"]; 
+          $presidente2 = $fila["PRESIDENTE"];
+          $vice2 =$fila["VPRESIDENTE"];
+          $tesorero2 =$fila["TESORERO"];
+          $fiscal2 =$fila["FISCAL"];
+          $vocal21 =$fila["VOCAL1"];
+          $vocal22 =$fila["VOCAL2"];
+          $vocal23 =$fila["VOCAL3"];}
+          $consulta2 = "SELECT * FROM juntas WHERE ID_JUNTAS=2";
+          $sth = $conexion->query($consulta2);
+          $resultado3=mysqli_fetch_array($sth);
+  
+          $consulta = "SELECT * FROM juntas WHERE ID_JUNTAS=5";
+      $resultado=mysqli_query($conexion, $consulta);
+      while ($fila=mysqli_fetch_array($resultado)) {
+          $nombre3= $fila["NOMBRE_JUNTA"];
+          $propuesta3 = $fila["PROPUESTA"];
+          $presidente3 = $fila["PRESIDENTE"];
+          $vice3 =$fila["VPRESIDENTE"];
+          $tesorero3 =$fila["TESORERO"];
+          $fiscal3 =$fila["FISCAL"];
+          $vocal31 =$fila["VOCAL1"];
+          $vocal32 =$fila["VOCAL2"];
+          $vocal33 =$fila["VOCAL3"]; }
+          $consulta2 = "SELECT * FROM juntas WHERE ID_JUNTAS=5";
+          $sth = $conexion->query($consulta2);
+          $resultado4=mysqli_fetch_array($sth);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +83,7 @@
 
 <body style="background-color:#f2f2f2 ">
 
-<?php
-      session_start();
 
-      if(!isset($_SESSION["usuario"])){
-        header("Location:Sing_In.php");
-      }
-?>
 
         
     <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px;">
@@ -60,10 +121,9 @@
 
               <div class="rounded float-start" style="height: 800px; width: 90%;background-color:  rgba(222, 232, 230, 0.8)">
                 <div style="background-image: url(../img/Ejemplo2.jpeg); background-size: cover; background-repeat: no-repeat; height: 350px; margin: 20px;"></div>
-                <p style="text-align: center; font-size: 30px"> COESYS:</p>
+                <p style="text-align: center; font-size: 30px"> <?php echo $nombre1?>:</p>
                 </br>
-                <p style="text-align: center"> “La educacion es lo más importante” </br>
-                  “Se regalara Pizza el ultimo jueves de cada mes”</p>
+                <p style="text-align: center"> <?php echo $propuesta1;?></p>
               </br>
                 <button style="margin-left: 40%;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                   Detalles
@@ -75,12 +135,12 @@
 
               <div class="rounded mx-auto d-block" style="height: 800px; width: 90%;background-color:  rgba(222, 232, 230, 0.8)">
                 <div style="background-image: url(../img/Ejemplo1.jpeg); background-size: cover; background-repeat: no-repeat; height: 350px; margin: 0px 20px"></div>
-                <p style="text-align: center; font-size: 30px"> SYSTEAM:</p>
+                <p style="text-align: center; font-size: 30px"> <?php echo $nombre2;?>:</p>
                 </br>
-                <p style="text-align: center"> “Juntos venceremos el Covid”</br>
-                  *Se realizarán jornadas deporte al final de cada período académico.</p>
-              </br>
-                <button style="margin-left: 40%;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                <p style="text-align: center"> <?php echo $propuesta2;?>
+                <br>
+                <br>
+                <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                   Detalles
                 </button>
               </div>              
@@ -89,12 +149,10 @@
             <div class="col-xl-4">
 
               <div class="rounded float-end" style="height: 800px; width: 90%; background-color:  rgba(222, 232, 230, 0.8)">
-                <div style="background-image: url(../img/Ejemplo3.jpeg); background-size: cover; background-repeat: no-repeat; height: 350px; margin: 0px 20px">Imagen Fondo</div>
-                <p style="text-align: center; font-size: 30px"> AJAX IS:</p>
+                <div style="background-image: url(../img/Ejemplo3.jpeg); background-size: cover; background-repeat: no-repeat; height: 350px; margin: 0px 20px"></div>
+                <p style="text-align: center; font-size: 30px"> <?php echo $nombre3;?>:</p>
                 </br>
-                <p style="text-align: center"> ”Aseguramos la construcción de Hopital Universitario"</br>
-                  *Se regalaran cupones de Bigos por Indice en el PAC</br>
-                  *Se realizarán jornadas deporte al final de cada período académico.</p>
+                <p style="text-align: center"> <?php echo $propuesta3;?> </p>
               </br>
                 <button style="margin-left: 40%;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
                   Detalles
@@ -116,25 +174,23 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Junta Directiva COESYS</h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Junta Directiva <?php echo $nombre1;?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <div style="background-image: url(../img/win95.png); background-size: cover; background-repeat: no-repeat; height: 300px; margin: 10px 50PX"></div>
+                <div class="img"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $resultado2['LOGO'] ).'"/>';?></div>
                 <p style="text-align: center"> INTEGRANTES: </br> 
-                                            Jose Zelaya-(Presidente)</br>
-                                            Fausto Flores-(Vice-Presidente)</br>
-                                            Erick Montoya-(Tesorero)</br>
-                                            Esdras Escoto-(Fiscal)</br>
-                                            Eduardo Coello-(Vocal 1)</br>
-                                            Bryan Ramos-(Vocal 2)</br>
-                                            Oscar Blanco-(Vocal 3)</br></br></br>
+                                            <?php echo $presidente1; ?>-(Presidente)</br>
+                                            <?php echo $vice1; ?>-(Vice-Presidente)</br>
+                                            <?php echo $tesorero1; ?>-(Tesorero)</br>
+                                            <?php echo $fiscal1; ?>-(Fiscal)</br>
+                                            <?php echo $vocal11; ?>-(Vocal 1)</br>
+                                            <?php echo $vocal12; ?>-(Vocal 2)</br>
+                                            <?php echo $vocal13; ?>-(Vocal 3)</br></br></br>
                                             PROPUESTAS:</br>
-                                            *Se realizarán jornadas deporte al final de cada período académico.</br>
-                                            *Se regalara Pizza el ultimo jueves de cada mes.</br></p>
+                                            <?php echo $propuesta1; ?></br></p>
                 </br>
-                <p style="text-align: center"> “Juntos venceremos el Covid”</br>
-                  *Se realizarán jornadas deporte al final de cada período académico.</p>
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -150,29 +206,25 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Junta Directiva SYSTEAM</h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Junta Directiva <?php echo $nombre2;?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <div style="background-image: url(../img/atomo.png); background-size: cover; background-repeat: no-repeat; height: 300px; margin: 10px 50PX"></div>
+              <div class="img"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $resultado3['LOGO'] ).'"/>';?></div>
                 <p style="text-align: center"> INTEGRANTES: </br> 
-                                            Jose Zelaya-(Presidente)</br>
-                                            Fausto Flores-(Vice-Presidente)</br>
-                                            Erick Montoya-(Tesorero)</br>
-                                            Esdras Escoto-(Fiscal)</br>
-                                            Eduardo Coello-(Vocal 1)</br>
-                                            Bryan Ramos-(Vocal 2)</br>
-                                            Oscar Blanco-(Vocal 3)</br></br></br>
+                                            <?php echo $presidente2;?>-(Presidente)</br>
+                                            <?php echo $vice2;?>-(Vice-Presidente)</br>
+                                            <?php echo $tesorero2;?>-(Tesorero)</br>
+                                            <?php echo $fiscal2;?>-(Fiscal)</br>
+                                            <?php echo $vocal21;?>-(Vocal 1)</br>
+                                            <?php echo $vocal22;?>-(Vocal 2)</br>
+                                            <?php echo $vocal23;?>-(Vocal 3)</br></br></br>
                                             PROPUESTAS:</br>
-                                            *Se realizarán jornadas deporte al final de cada período académico.</br>
-                                            *Se regalara Pizza el ultimo jueves de cada mes.</br></p>
+                                            <?php echo $propuesta2;?></br></p>
                 </br>
-                <p style="text-align: center"> “Juntos venceremos el Covid”</br>
-                  *Se realizarán jornadas deporte al final de cada período académico.</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
@@ -184,36 +236,33 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Junta Directiva AJAX IS</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Junta Directiva <?php echo $nombre3;?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <div style="background-image: url(../img/laptop.png); background-size: cover; background-repeat: no-repeat; height: 300px; margin: 10px 50PX"></div>
+              <div class="img"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $resultado4['LOGO'] ).'"/>';?></div>
                 <p style="text-align: center"> INTEGRANTES: </br> 
-                                            Jose Zelaya-(Presidente)</br>
-                                            Fausto Flores-(Vice-Presidente)</br>
-                                            Erick Montoya-(Tesorero)</br>
-                                            Esdras Escoto-(Fiscal)</br>
-                                            Eduardo Coello-(Vocal 1)</br>
-                                            Bryan Ramos-(Vocal 2)</br>
-                                            Oscar Blanco-(Vocal 3)</br></br></br>
+                                            <?php echo $presidente3;?>-(Presidente)</br>
+                                            <?php echo $vice3;?>-(Vice-Presidente)</br>
+                                            <?php echo $tesorero3;?>-(Tesorero)</br>
+                                            <?php echo $fiscal3;?>-(Fiscal)</br>
+                                            <?php echo $vocal31;?>-(Vocal 1)</br>
+                                            <?php echo $vocal32;?>-(Vocal 2)</br>
+                                            <?php echo $vocal33;?>-(Vocal 3)</br></br></br>
                                             PROPUESTAS:</br>
-                                            *Se realizarán jornadas deporte al final de cada período académico.</br>
-                                            *Se regalara Pizza el ultimo jueves de cada mes.</br></p>
+                                            <?php echo $propuesta3;?></br></p>
                 </br>
-                <p style="text-align: center"> “Juntos venceremos el Covid”</br>
-                  *Se realizarán jornadas deporte al final de cada período académico.</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
         </div>
 
 <!--============================================================Footer(Publicidad)==============================================================================-->
-        <footer style="background-color: transparent"> 
+      <br><br><br><br><br><br><br>  
+      <footer style="background-color: transparent"> 
 
             <div class="container-fluid">
 

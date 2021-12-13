@@ -1,6 +1,6 @@
 <?php 
     
-    $nombres=$propuesta=$presidente=$vice_presidente=$tesorero=$fiscal=$vocal1=$vocal2=$vocal3=$foto_junta=$logo"";
+    $nombres=$propuesta=$presidente=$vice_presidente=$tesorero=$fiscal=$vocal1=$vocal2=$vocal3=$foto_junta=$logo="";
         
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = $_POST['Nombre'];
@@ -27,6 +27,8 @@
         VALUES (:Nombre, :Propuesta, :Presidente, :VicePresidente, :Tesorero, :Fiscal, :Vocal1, :Vocal2, :Vocal3, :Logo, :Foto_Junta)";
         $resultado =  $base->prepare($sql);
         $resultado -> execute(array(":Nombre"=>$nombre, ":Propuesta"=>$propuesta, ":Presidente"=>$presidente, ":VicePresidente"=>$vice_presidente, ":Tesorero"=>$tesorero, ":Fiscal"=>$fiscal, ":Vocal1"=>$vocal1, ":Vocal2"=>$vocal2, ":Vocal3"=>$vocal3, ":Logo"=>$logo,":Foto_Junta"=>$foto_junta));
+        header("Location:Inicio_Administrador.php");
+
       //  echo "Registro Insertado";
     }catch(Exception $e){
       

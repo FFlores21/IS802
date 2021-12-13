@@ -187,13 +187,14 @@
                   <input type="text" REQUIRED name="Vocal3" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Logo</label>
-                    <input type="file" REQUIRED name ="Logo" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Foto Junta</label>
                     <input type="file" REQUIRED name ="Foto_Junta" class="form-control" id="exampleInputPassword1">
                 </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Logo</label>
+                    <input type="file" REQUIRED name ="Logo" class="form-control" id="exampleInputPassword1">
+                </div>
+               
 
     
                 <button type="submit" name="register" class="btn btn-primary">Editar Junta</button>

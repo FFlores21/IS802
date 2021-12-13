@@ -10,3 +10,4 @@ function verificarRadios() {
         Add_Table3();
     };
 };
+

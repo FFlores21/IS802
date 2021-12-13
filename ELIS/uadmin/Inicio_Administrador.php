@@ -1,3 +1,57 @@
+<?php
+      session_start();
+
+      if(!isset($_SESSION["admin"])){
+        header("Location:Sign_InA.php");
+      }
+?>
+<?php
+
+    
+$correo_session=$_SESSION["admin"];
+              
+$conexion=mysqli_connect('localhost', 'root', '');
+if(mysqli_connect_errno()){
+    echo "Fallo al conectar con la BBDD";
+    exit();
+}
+mysqli_select_db($conexion, 'db_elis(2.0)') or die ("no se encuentra db");
+mysqli_set_charset($conexion, "utf8");
+
+$consulta = "SELECT NOMBRE_JUNTA, PROPUESTA FROM juntas WHERE ID_JUNTAS=1";
+$resultado=mysqli_query($conexion, $consulta);
+while ($fila=mysqli_fetch_array($resultado)) {
+    $nombre1= $fila["NOMBRE_JUNTA"]; 
+    $propuesta1= $fila["PROPUESTA"];}
+$consulta = "SELECT NOMBRE_JUNTA, PROPUESTA FROM juntas WHERE ID_JUNTAS=2";
+$resultado=mysqli_query($conexion, $consulta);
+while ($fila=mysqli_fetch_array($resultado)) {
+    $nombre2= $fila["NOMBRE_JUNTA"];
+    $propuesta2= $fila["PROPUESTA"];}
+$consulta = "SELECT NOMBRE_JUNTA, PROPUESTA FROM juntas WHERE ID_JUNTAS=5";
+$resultado=mysqli_query($conexion, $consulta);
+while ($fila=mysqli_fetch_array($resultado)) {
+    $nombre3= $fila["NOMBRE_JUNTA"]; 
+    $propuesta3= $fila["PROPUESTA"];}
+
+
+
+    $solicitud_usuario="";
+    $id_solicitud=4;
+    
+    $consulta = "SELECT MENSAJE, ESTATUS FROM solicitudes WHERE ID_SOLICITUD ='$id_solicitud'";
+    $resultado=mysqli_query($conexion, $consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+        $solicitud_usuario= $fila["MENSAJE"]; 
+        $estatus_solicitud= $fila["ESTATUS"];}
+
+    
+    
+    
+    
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +71,10 @@
 
 <body style="background-color:#f2f2f2 ">
 
-<?php
-      session_start();
 
-      if(!isset($_SESSION["admin"])){
-        header("Location:Sign_InA.php");
-      }
-?>
 
         
-    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px;">
+    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px;" class="barr">
 
       <img src="../img/img1.jpg" style="height: 100%">
 
@@ -59,24 +107,24 @@
          </div>
          <div class="carousel-inner">
            <div class="carousel-item active">
-             <img src="../img/Ejemplo1.jpeg" class="d-block w-100" >
+             <img src="../img/img_junta1.jpg" class="d-block w-100" >
              <div class="carousel-caption d-none d-md-block">
-               <h5>Trump</h5>
-               <p>Some representative placeholder content for the first slide.</p>
+               <h5><?php echo $nombre1;?></h5>
+               <p><?php echo $propuesta1;?></p>
              </div>
            </div>
            <div class="carousel-item">
-             <img src="../img/Ejemplo3.jpeg" class="d-block w-100" >
+             <img src="../img/img_junta2.jpg" class="d-block w-100" >
              <div class="carousel-caption d-none d-md-block">
-               <h5>Bukele</h5>
-               <p>Some representative placeholder content for the second slide.</p>
+               <h5><?php echo $nombre2;?></h5>
+               <p><?php echo $propuesta2;?></p>
              </div>
            </div>
            <div class="carousel-item">
-             <img src="../img/Ejemplo2.jpeg" class="d-block w-100" >
+             <img src="../img/img_junta3.jpg" class="d-block w-100" >
              <div class="carousel-caption d-none d-md-block">
-               <h5>Viden</h5>
-               <p>Some representative placeholder content for the third slide.</p>
+               <h5><?php echo $nombre3;?></h5>
+               <p><?php echo $propuesta3;?></p>
              </div>
            </div>
          </div>
@@ -111,18 +159,18 @@
               <div class="col-xl-4">
                 <div class="rounded mx-auto d-block">
                   <div><!-- Propuesta Minuatura #1--> 
-                    <div style="background-image: url(../img/Ejemplo1.jpeg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
-                    <a href="Candidatos.php" style="color: black;">”Aseguramos la construcción de Hopitales”</a>  
+                    <div style="background-image: url(../img/img_junta1.jpg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
+                    <a href="Candidatos.php" style="color: black;">”<?php echo $propuesta1;?>”</a>  
                   </div>
 
                   <div><!-- Propuesta Miniatura #2 -->
-                    <div style="background-image: url(../img/Ejemplo3.jpeg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
-                    <a href="Candidatos.php" style="color: black;">“Juntos venceremos el Covid”</a>
+                    <div style="background-image: url(../img/img_junta2.jpg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
+                    <a href="Candidatos.php" style="color: black;">“<?php echo $propuesta2;?>”</a>
                   </div>
 
                   <div><!-- Propuesta Miniatura #3-->
-                    <div style="background-image: url(../img/Ejemplo2.jpeg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
-                    <a href="Candidatos.php" style="color: black;">“La educacion es lo más importante”</a>
+                    <div style="background-image: url(../img/img_junta3.jpg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
+                    <a href="Candidatos.php" style="color: black;">“<?php echo $propuesta3;?>”</a>
                   </div>
                 </div>
               </div>
@@ -130,22 +178,20 @@
                 <div class="list-group">
                   <a href="#" style="background-color: rgba(24, 154, 198, 0.99);" class="list-group-item list-group-item-action active">
                     <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">Mensajes</h5>
+                      <h5 class="mb-1">Solicitudes</h5>
                     </div>
                   </a>
                   <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">Solicitud Aceptada</h5>
-                      <small>3 days ago</small>
+                      <h5 class="mb-1">Solicitud de Inscripción</h5>
                     </div>
-                    <p class="mb-1">Estimado aspirante se le informa que su solicitud cumple con todos los requitos y por lo tanto fue aceptado como candidato</p>
+                    <p class="mb-1"><?php echo $solicitud_usuario;?></p>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal5">Aprobar</button>
+
                   </a>
-                  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">Solicitud Rechazada</h5>
-                    </div>
-                    <p class="mb-1">Estimado aspirante se le informa que su solicitud no cumple con todos los requitos requeridos y por lo tanto fue rechazado como candidato</p>
-                  </a>
+                  
+
+                  
                 </div>
               </div>
             </div>
@@ -188,6 +234,32 @@
     </div>
   </div>
 </div>
+
+         <!-- Modal 5 -->
+         <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aprobar Solicitud</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+              <div style="Background-color:rgba(196, 196, 196, 1);padding:10px">
+                  <form action="Aprobar_Solicitud.php" method="post">
+                  
+                    <button type="submit" name="register" class="btn btn-primary">Si</button>
+
+                  </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
 
 <!--============================================================Footer(Publicidad)==============================================================================-->
     <footer style="background-color: rgba(24, 154, 198, 0.64);"> 

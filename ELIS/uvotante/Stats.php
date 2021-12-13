@@ -73,7 +73,7 @@
 
 
         
-    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px;">
+    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px " class="barr">
 
       <a href="Inicio_Usuario.php"><img src="../img/img1.jpg" style="height: 100%"></a>
 

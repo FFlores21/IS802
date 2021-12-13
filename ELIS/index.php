@@ -1,3 +1,31 @@
+<?php
+
+                 
+    $conexion=mysqli_connect('localhost', 'root', '');
+    if(mysqli_connect_errno()){
+        echo "Fallo al conectar con la BBDD";
+        exit();
+    }
+    mysqli_select_db($conexion, 'db_elis(2.0)') or die ("no se encuentra db");
+    mysqli_set_charset($conexion, "utf8");
+
+    $consulta = "SELECT NOMBRE_JUNTA, PROPUESTA FROM juntas WHERE ID_JUNTAS=1";
+    $resultado=mysqli_query($conexion, $consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+        $nombre1= $fila["NOMBRE_JUNTA"]; 
+        $propuesta1= $fila["PROPUESTA"];}
+    $consulta = "SELECT NOMBRE_JUNTA, PROPUESTA FROM juntas WHERE ID_JUNTAS=2";
+    $resultado=mysqli_query($conexion, $consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+        $nombre2= $fila["NOMBRE_JUNTA"];
+        $propuesta2= $fila["PROPUESTA"];}
+    $consulta = "SELECT NOMBRE_JUNTA, PROPUESTA FROM juntas WHERE ID_JUNTAS=5";
+    $resultado=mysqli_query($conexion, $consulta);
+    while ($fila=mysqli_fetch_array($resultado)) {
+        $nombre3= $fila["NOMBRE_JUNTA"]; 
+        $propuesta3= $fila["PROPUESTA"];}
+        
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +48,7 @@
 
 
         
-    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px;">
+    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px" class="barr">
 
       <a href="index.php"><img src="img/img1.jpg" style="height: 100%"></a>
 
@@ -28,14 +56,13 @@
 
       
 
-      <a href="uvotante/Candidatos.php" style="padding-left: 50%; color:white; font-size:larger;">Candidatos</a>
+      <a href="uvotante/Candidatos.php" style="padding-left: 50%; color:white; font-size:larger" >Candidatos</a>
 
-      <a href="" style="padding-left: 5%; color:white; font-size:larger;" 
-      data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Sign In</a>
+      <a href="#" style="padding-left: 5%; color:white; font-size:larger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Sign In</a>
 
-      <a href="uvotante/Inscribir_Usuario.php" style="padding-left: 5%; color: white;font-size: larger;">Sing Up</a>
+      <a href="uvotante/Inscribir_Usuario.php" style="padding-left: 5%; color: white;font-size: larger" >Sing Up</a>
 
-      <a href="uvotante/Stats.php" style="padding-left: 5%; color: white;font-size: larger;">Statistics</a>
+      <a href="uvotante/Stats.php" style="padding-left: 5%; color: white;font-size: larger" >Statistics</a>
 
       
     </header>
@@ -51,24 +78,24 @@
          </div>
          <div class="carousel-inner">
            <div class="carousel-item active">
-             <img src="img/Ejemplo1.jpeg" class="d-block w-100" >
+             <img src="img/img_junta1.jpg" class="d-block w-100" >
              <div class="carousel-caption d-none d-md-block">
-               <h5>Trump</h5>
-               <p>Some representative placeholder content for the first slide.</p>
+               <h5><?php echo $nombre1;?></h5>
+               <p><?php echo $propuesta1;?></p>
              </div>
            </div>
            <div class="carousel-item">
-             <img src="img/Ejemplo3.jpeg" class="d-block w-100" >
+             <img src="img/img_junta2.jpg" class="d-block w-100" >
              <div class="carousel-caption d-none d-md-block">
-               <h5>Bukele</h5>
-               <p>Some representative placeholder content for the second slide.</p>
+               <h5><?php echo $nombre2;?></h5>
+               <p><?php echo $propuesta2;?></p>
              </div>
            </div>
            <div class="carousel-item">
-             <img src="img/Ejemplo2.jpeg" class="d-block w-100" >
+             <img src="img/img_junta3.jpg" class="d-block w-100" >
              <div class="carousel-caption d-none d-md-block">
-               <h5>Viden</h5>
-               <p>Some representative placeholder content for the third slide.</p>
+               <h5><?php echo $nombre3;?></h5>
+               <p><?php echo $propuesta3;?></p>
              </div>
            </div>
          </div>
@@ -103,18 +130,18 @@
               <div class="col-xl-4">
                 <div class="rounded mx-auto d-block">
                   <div><!-- Propuesta Minuatura #1--> 
-                    <div style="background-image: url(img/Ejemplo1.jpeg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
-                    <a href="Candidatos.html" style="color: black;">”Aseguramos la construcción de Hopitales”</a>  
+                    <div style="background-image: url(img/img_junta1.jpg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
+                    <a href="Candidatos.html" style="color: black;">”<?php echo $propuesta1;?>”</a>  
                   </div>
 
                   <div><!-- Propuesta Miniatura #2 -->
-                    <div style="background-image: url(img/Ejemplo3.jpeg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
-                    <a href="Candidatos.html" style="color: black;">“Juntos venceremos el Covid”</a>
+                    <div style="background-image: url(img/img_junta2.jpg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
+                    <a href="Candidatos.html" style="color: black;">“<?php echo $propuesta2;?>”</a>
                   </div>
 
                   <div><!-- Propuesta Miniatura #3-->
-                    <div style="background-image: url(img/Ejemplo2.jpeg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
-                    <a href="Candidatos.html" style="color: black;">“La educacion es lo más importante”</a>
+                    <div style="background-image: url(img/img_junta3.jpg); background-size: cover; background-repeat: no-repeat; height: 150px"></div>
+                    <a href="Candidatos.html" style="color: black;">“<?php echo $propuesta3;?>”</a>
                   </div>
                 </div>
               </div>

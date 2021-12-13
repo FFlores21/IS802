@@ -18,15 +18,13 @@
 <body style="background-color:#f2f2f2 ">
 
         
-    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px;">
+    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px" class="barr">
 
       <a href="../index.php"><img src="../img/img1.jpg" style="height: 100%"></a>
 
       <!-- Botones (Anclas) de sing in, sing up y estadisticas-->
 
-      <a href="Sing_In.php" style="padding-left: 75%; color:white; font-size:larger;" >Sing In</a>
-
-      <a href="Stats.html" style="padding-left: 5%; color: white;font-size: larger;">Statistics</a>
+     
 
       
     </header>
@@ -40,7 +38,7 @@
         
         <div>
 
-          <h3 class="titulos" style="text-align:center;color:#333 ;margin:0% auto; padding: 3% auto;"> DATOS</h3>
+          <h3 class="titulos" style="text-align:center;color:#333 ;margin:0% auto; padding: 3% auto;"> INFORMACION</h3>
 
         </div>
 
@@ -48,43 +46,28 @@
 <!--=============================================================Formulario========================================================================-->
 
         <div class="formulario">
-            <form action="Guardar_Usuario.php" method="post">
+            <form action="Guardar_Correo.php" method="post">
                 <div class="mb-3">
                   <label for="exampleInputPassword1"  class="form-label">Nombres</label>
-                  <input type="text" REQUIRED name="Nombres" class="form-control" id="exampleInputPassword1">
+                  <input type="text" REQUIRED name="nombres" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1"  class="form-label">Apellidos</label>
-                    <input type="text" REQUIRED name="Apellidos" class="form-control" id="exampleInputPassword1">
+                    <input type="text" REQUIRED name="apellidos" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Correo Institucional</label>
-                    <input type="email" REQUIRED name="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="exampleInputEmail1" class="form-label">Correo</label>
+                    <input type="email" REQUIRED name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1"  class="form-label">Cuenta</label>
-                    <input type="number" REQUIRED name="Cuenta" class="form-control" id="exampleInputPassword1">
+                    <label for="exampleInputPassword1"  class="form-label">Carrera</label>
+                    <input type="text" REQUIRED name="carrera" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div class="mb-3">                  
-                    <label for="disabledSelect" class="form-label">Genero</label>
-                    <select id="disabledSelect" REQUIRED name="Genero" class="form-select">
-                        <option>Select List</option>
-                        <option>Masculino</option>
-                        <option>Femenino</option>
-                    </select>
-                </div>
+                
 
 
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                  <input type="password" REQUIRED name="contrasena" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Confirmar Contraseña</label>
-                  <input type="password" REQUIRED name="password2" class="form-control" id="exampleInputPassword1">
-                </div>  
-    
-                <button type="submit" name="register" class="btn btn-primary">Sing Up</button>
+                
+                <button type="submit" name="register" class="btn btn-primary"  >Inscribir Correo</button>
             <!------Agregue modal para mostrar mensaje de Usuario Registrado----->
               </form>
 

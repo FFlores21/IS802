@@ -1,4 +1,10 @@
+<?php 
+      session_start();
 
+      if(!isset($_SESSION["admin"])){
+        header("Location:Sign_InA.php");
+      }
+?>
 <?php
 
 ///////////////////////////////VARIABLES///////////////////////////////////////
@@ -64,16 +70,9 @@
 
 <body style="background-color:#f2f2f2 ">
 
-<?php 
-      session_start();
-
-      if(!isset($_SESSION["admin"])){
-        header("Location:Sign_InA.php");
-      }
-?>
 
         
-    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px;">
+    <header  style="background-color: rgba(24, 154, 198, 0.99); height: 100px" class="barr"> 
 
       <a href="Inicio_Usuario.php"><img src="../img/img1.jpg" style="height: 100%"></a>
 
@@ -110,9 +109,9 @@
                       <thead></thead>
                       <tbody>
                         <tr style="padding:50px">
-                          <td style="height: 100px; width:100px"><t3> Eleccion #1</t3></td>
-                          <td style="height: 100px; width:100px"><button type="submit" style="width: 100%; background-color: rgba(196, 196, 196, 1); color: black;border-color: rgba(196, 196, 196, 1); border-radius: 3px ">Iniciar</button></td>
-                          <td style="height: 100px; width:100px"><button type="submit" style="width: 100%; background-color: rgba(196, 196, 196, 1); color: black;border-color: rgba(196, 196, 196, 1); border-radius: 3px ">Finalizar</button></td>
+                          <td style="height: 100px; width:100px"><t3> Elecciones 2021</t3></td>
+                          <td style="height: 100px; width:100px"><button type="button" style="width: 100%; background-color: rgba(196, 196, 196, 1); color: black;border-color: rgba(196, 196, 196, 1); border-radius: 3px " class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">Iniciar</button></td>
+                          <td style="height: 100px; width:100px"><button type="button" style="width: 100%; background-color: rgba(196, 196, 196, 1); color: black;border-color: rgba(196, 196, 196, 1); border-radius: 3px " class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">Finalizar</button></td>
                         </tr>
                       </tbody>
                   </table>
@@ -133,13 +132,13 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> CREAR ELECCION</h5>
+                <h5 class="modal-title" id="exampleModalLabel">CREAR ELECCION</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
 
               <div style="Background-color:rgba(196, 196, 196, 1);padding:10px">
-                  <form action="Crear_Eleccion.php" method="post">
+                  <form action="Guardar_Eleccion.php" method="post">
 
                     <label for="exampleInputPassword1"  class="form-label">PERIODO</label>
                     <input type="text" REQUIRED name="Periodo_Academico" placeholder= "PERIODO ACADÉMICO" class="form-control" id="exampleInputPassword1">
@@ -169,11 +168,63 @@
                         <option><?php echo $nombre_junta3;?></option>
                     </select>
                   
-                    <button type="button" name="register" class="btn btn-primary">Crear Eleccion</button>
+                    <button type="submit" name="register" class="btn btn-primary">Crear Eleccion</button>
 
                   </form>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!-- Modal 3 -->
+         <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Iniciar Eleccion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+              <div style="Background-color:rgba(196, 196, 196, 1);padding:10px">
+                  <form action="Iniciar_Eleccion.php" method="post">
+                  
+                    <button type="submit" name="register" class="btn btn-primary">Si</button>
+
+                  </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!-- Modal 4 -->
+         <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Finalizar Eleccion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+              <div style="Background-color:rgba(196, 196, 196, 1);padding:10px">
+                  <form action="Finalizar_Eleccion.php" method="post">
+                  
+
+                  </form>
+                <div class="modal-footer">
+                  <button type="submit" name="register" class="btn btn-primary">Si</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
 
                 </div>
 
